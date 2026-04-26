@@ -1,4 +1,12 @@
-export const brands = [
+// 加上 Brand 类型定义并导出
+export type Brand = {
+  key: string
+  name: string
+  bonus: string
+  url: string
+}
+
+export const brands: Brand[] = [
   {
     key: 'site-a',
     name: '平台A',
@@ -11,4 +19,4 @@ export const brands = [
     bonus: '世界杯专区',
     url: 'https://example.com/?aff_id=YOUR_ID',
   },
-];
+]
