@@ -1,24 +1,18 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getBrandByKey } from "@/data/brands";
+import { brands } from '@/data/brands';
+import { NextResponse } from 'next/server';
 
-type BrandRouteContext = {
-  params: Promise<{
-    brand: string;
-  }>;
+type Props = {
+  params: Promise<{ brand: string }>;
 };
 
-export async function GET(request: NextRequest, { params }: BrandRouteContext) {
+export async function GET(_: Request, { params }: Props) {
   const { brand } = await params;
-  const brandItem = getBrandByKey(brand);
+  const item = brands.find((b) => b.key === brand);
 
-  if (!brandItem) {
-    return NextResponse.redirect(new URL("/best-sites", request.url), 307);
+  if (!item) {
+    return NextResponse.redirect(new URL('/best-sites', process.env.NEXT_PUBLIC_SITE_URL));
   }
 
-  const targetUrl = new URL(brandItem.url);
-  targetUrl.searchParams.set("utm_source", "worldcup-seo");
-  targetUrl.searchParams.set("utm_medium", "referral");
-  targetUrl.searchParams.set("utm_campaign", brandItem.key);
-
-  return NextResponse.redirect(targetUrl, 307);
+  // 这里可以后续接数据库，记录点击次数、来源、时间等
+  return NextResponse.redirect(item.url);
 }

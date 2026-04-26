@@ -1,26 +1,33 @@
-import SiteCard from "@/components/SiteCard";
-import { brands } from "@/data/brands";
-import { buildMetadata } from "@/lib/seo";
+import { brands } from '@/data/brands';
 
-export const metadata = buildMetadata({
-  title: "Best Betting Sites for World Cup",
-  description: "Compare bonuses, ratings, and key features for trusted betting brands.",
-  path: "/best-sites"
-});
+export const metadata = {
+    title: '2026世界杯热门平台活动整理',
+    description: '整理世界杯期间的热门赛事活动、平台入口和用户参考信息。',
+};
 
 export default function BestSitesPage() {
-  return (
-    <section>
-      <h1 style={{ marginBottom: 8 }}>Best Betting Sites</h1>
-      <p style={{ marginTop: 0, marginBottom: 24 }}>
-        Shortlist of top operators for World Cup markets.
-      </p>
+    return (
+        <main className="mx-auto max-w-4xl px-4 py-8">
+            <h1 className="text-3xl font-bold">2026世界杯热门平台活动整理</h1>
+            <p className="mt-3 text-gray-600">
+                以下内容仅作信息整理，请遵守所在地法律法规，并理性参与。
+            </p>
 
-      <div style={{ display: "grid", gap: 16 }}>
-        {brands.map((brand) => (
-          <SiteCard key={brand.key} brand={brand} />
-        ))}
-      </div>
-    </section>
-  );
+            <div className="mt-8 grid gap-4">
+                {brands.map((brand) => (
+                    <div key={brand.key} className="rounded-xl border p-5">
+                        <h2 className="text-xl font-bold">{brand.name}</h2>
+                        <p className="mt-2 text-gray-600">{brand.bonus}</p>
+                        <a
+                            href={`/go/${brand.key}`}
+                            rel="nofollow sponsored"
+                            className="mt-4 inline-block rounded-lg bg-black px-5 py-3 text-white"
+                        >
+                            查看活动
+                        </a>
+                    </div>
+                ))}
+            </div>
+        </main>
+    );
 }

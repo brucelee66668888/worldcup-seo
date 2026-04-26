@@ -1,33 +1,18 @@
-import Link from "next/link";
+import Link from 'next/link';
 
-type CTABoxProps = {
-  title: string;
-  description: string;
-  ctaLabel?: string;
-  ctaHref?: string;
-};
-
-export default function CTABox({
-  title,
-  description,
-  ctaLabel = "View Best Betting Sites",
-  ctaHref = "/best-sites"
-}: CTABoxProps) {
-  return (
-    <section
-      style={{
-        marginTop: 24,
-        padding: 20,
-        border: "1px solid #d1d5db",
-        borderRadius: 12,
-        background: "#f9fafb"
-      }}
-    >
-      <h3 style={{ marginBottom: 8 }}>{title}</h3>
-      <p style={{ marginBottom: 14 }}>{description}</p>
-      <Link href={ctaHref} style={{ fontWeight: 600 }}>
-        {ctaLabel}
-      </Link>
-    </section>
-  );
+export default function CTABox() {
+    return (
+        <div className="mt-10 rounded-xl border p-6">
+            <h2 className="text-xl font-bold">世界杯赛事参考工具</h2>
+            <p className="mt-2 text-gray-600">
+                查看热门赛事、平台活动和赛前分析。请确认你所在地允许相关服务。
+            </p>
+            <Link
+                href="/best-sites"
+                className="mt-4 inline-block rounded-lg bg-black px-5 py-3 text-white"
+            >
+                查看推荐列表
+            </Link>
+        </div>
+    );
 }

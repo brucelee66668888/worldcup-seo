@@ -1,35 +1,58 @@
-export type Match = {
-  id: string;
-  homeTeam: string;
-  awayTeam: string;
-  date: string;
-  group: string;
-  venue: string;
-};
-
-export const matches: Match[] = [
+export const matches = [
   {
-    id: "m1",
-    homeTeam: "Brazil",
-    awayTeam: "Spain",
-    date: "2026-06-15",
-    group: "Group A",
-    venue: "New York"
+    home: '阿根廷',
+    away: '法国',
+    date: '2026-06-12',
+    league: '2026世界杯',
+    slug: 'argentina-vs-france-prediction',
   },
   {
-    id: "m2",
-    homeTeam: "Argentina",
-    awayTeam: "France",
-    date: "2026-06-16",
-    group: "Group B",
-    venue: "Los Angeles"
+    home: '巴西',
+    away: '德国',
+    date: '2026-06-13',
+    league: '2026世界杯',
+    slug: 'brazil-vs-germany-prediction',
   },
   {
-    id: "m3",
-    homeTeam: "Germany",
-    awayTeam: "England",
-    date: "2026-06-17",
-    group: "Group C",
-    venue: "Dallas"
-  }
-];
+    home: '英格兰',
+    away: '葡萄牙',
+    date: '2026-06-14',
+    league: '2026世界杯',
+    slug: 'england-vs-portugal-prediction',
+  },
+  {
+    home: '西班牙',
+    away: '荷兰',
+    date: '2026-06-15',
+    league: '2026世界杯',
+    slug: 'spain-vs-netherlands-prediction',
+  },
+  {
+    home: '日本',
+    away: '韩国',
+    date: '2026-06-16',
+    league: '2026世界杯',
+    slug: 'japan-vs-korea-prediction',
+  },
+  {
+    home: '中国',
+    away: '泰国',
+    date: '2026-06-17',
+    league: '2026世界杯亚洲区热身赛',
+    slug: 'china-vs-thailand-prediction',
+  },
+  {
+    home: '美国',
+    away: '墨西哥',
+    date: '2026-06-18',
+    league: '2026世界杯',
+    slug: 'usa-vs-mexico-prediction',
+  },
+  {
+    home: '意大利',
+    away: '克罗地亚',
+    date: '2026-06-19',
+    league: '2026世界杯',
+    slug: 'italy-vs-croatia-prediction',
+  },
+] as const;
