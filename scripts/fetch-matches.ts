@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import path from 'path';
 
-for (const envFile of ['.env.local', '.env']) {
+for (const envFile of ['.env']) {
     dotenv.config({ path: path.join(process.cwd(), envFile), override: false });
 }
 
