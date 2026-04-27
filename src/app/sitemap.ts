@@ -42,7 +42,8 @@ function loadPosts(): Post[] {
 
 // ─── Sitemap 主体 ────────────────────────────────────────────
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://your-domain.com";
+    // const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://your-domain.com";
+    const baseUrl = 'https://football2026tips.com'
 
     // 1. 静态页面
     const staticPages: MetadataRoute.Sitemap = [

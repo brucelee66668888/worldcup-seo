@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://worldcup-seo-v2.vercel.app'),
+  metadataBase: new URL('https://football2026tips.com'),
   title: {
     default: '2026世界杯赛事预测 | 比分参考与赛前分析',
     template: '%s | WorldCup Pro 世界杯预测站',
