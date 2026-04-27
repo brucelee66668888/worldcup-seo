@@ -3,6 +3,12 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://football2026tips.com'),
+
+  // 加这一行 ↓（把 xxxxxx 替换成 Google 给你的那串字符）
+  verification: {
+    google: '3jJqFelg6kSQ4B_6sBXADOyjZglUcaEoyZR4wo2A6s0',
+  },
+
   title: {
     default: '2026世界杯赛事预测 | 比分参考与赛前分析',
     template: '%s | WorldCup Pro 世界杯预测站',
