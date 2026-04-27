@@ -7,14 +7,10 @@ import { brands } from '@/data/brands'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
+import { teamFlags } from '@/lib/flags'
 
 type Props = { params: Promise<{ slug: string }> }
 
-const teamFlags: Record<string, string> = {
-    '阿根廷': '🇦🇷', '法国': '🇫🇷', '巴西': '🇧🇷', '德国': '🇩🇪',
-    '英格兰': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', '葡萄牙': '🇵🇹', '西班牙': '🇪🇸', '荷兰': '🇳🇱',
-    '日本': '🇯🇵', '韩国': '🇰🇷', '美国': '🇺🇸', '墨西哥': '🇲🇽',
-}
 
 const riskColor: Record<string, string> = {
     '低': '#22c55e', '低中': '#86efac', '中': '#facc15', '中高': '#fb923c', '高': '#f87171',

@@ -4,17 +4,13 @@
 import Link from 'next/link'
 import { matches } from '@/data/matches'
 import type { Metadata } from 'next'
+import { teamFlags } from '@/lib/flags'
 
 export const metadata: Metadata = {
     title: '2026世界杯赛事预测 | 比分参考与赛前分析',
     description: '2026世界杯热门赛事赛前分析、比分方向与盘口参考。阿根廷vs法国、巴西vs德国等焦点赛事深度解析，每日更新。',
 }
 
-const teamFlags: Record<string, string> = {
-    '阿根廷': '🇦🇷', '法国': '🇫🇷', '巴西': '🇧🇷', '德国': '🇩🇪',
-    '英格兰': '🏴󠁧󠁢󠁥󠁮󠁧󠁿', '葡萄牙': '🇵🇹', '西班牙': '🇪🇸', '荷兰': '🇳🇱',
-    '日本': '🇯🇵', '韩国': '🇰🇷', '美国': '🇺🇸', '墨西哥': '🇲🇽',
-}
 
 const riskColor: Record<string, string> = {
     '低': '#22c55e', '低中': '#86efac', '中': '#facc15',
@@ -22,7 +18,7 @@ const riskColor: Record<string, string> = {
 }
 
 export default function HomePage() {
-    const featured = matches[0]
+    const featured = [...matches].sort((a, b) => b.heat - a.heat)[0]
 
     return (
         <>
