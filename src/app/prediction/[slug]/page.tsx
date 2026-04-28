@@ -141,15 +141,46 @@ export default async function PredictionPage({ params }: Props) {
         '@type': 'SportsEvent',
         name: `${post.home} vs ${post.away}`,
         startDate: `${post.date}T${md?.time ?? '20:00'}:00+08:00`,
+        endDate: `${post.date}T${md?.time ?? '20:00'}:00+08:00`,
         sport: 'Football',
         description: post.description,
         url: `${siteUrl}/prediction/${post.slug}`,
-        location: { '@type': 'Place', name: '2026 FIFA World Cup' },
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        image: `${siteUrl}/og-default.jpg`,
+        location: {
+            '@type': 'Place',
+            name: '2026 FIFA World Cup Venue',
+            address: {
+                '@type': 'PostalAddress',
+                addressCountry: 'US',
+                addressLocality: 'United States',
+            },
+        },
+        organizer: {
+            '@type': 'Organization',
+            name: 'FIFA',
+            url: 'https://www.fifa.com',
+        },
         competitor: [
             { '@type': 'SportsTeam', name: post.home },
             { '@type': 'SportsTeam', name: post.away },
         ],
-        superEvent: { '@type': 'SportsEvent', name: '2026 FIFA World Cup' },
+        superEvent: {
+            '@type': 'SportsEvent',
+            name: '2026 FIFA World Cup',
+            url: 'https://www.fifa.com/worldcup',
+            startDate: '2026-06-11T00:00:00+00:00',
+            endDate: '2026-07-19T00:00:00+00:00',
+            location: {
+                '@type': 'Place',
+                name: 'United States, Canada, Mexico',
+                address: {
+                    '@type': 'PostalAddress',
+                    addressCountry: 'US',
+                },
+            },
+        },
     }
 
     const articleSchema = {
