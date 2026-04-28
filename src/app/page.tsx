@@ -268,50 +268,51 @@ export default function HomePage() {
                 </div>
             </div>
 
-            <div className="main">
-                {/* 命中率横幅 */}
+            {/* 命中率横幅 */}
+            <div style={{
+                background: 'linear-gradient(90deg, rgba(34,197,94,0.1), rgba(34,197,94,0.05), transparent)',
+                border: '1px solid rgba(34,197,94,0.2)',
+                borderRadius: 10,
+                padding: '12px 18px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: 16,
+                marginBottom: 16,
+            }}>
                 <div style={{
-                    background: 'linear-gradient(90deg, rgba(34,197,94,0.1), rgba(34,197,94,0.05), transparent)',
-                    border: '1px solid rgba(34,197,94,0.2)',
-                    borderRadius: 10,
-                    padding: '12px 18px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 16,
-                    marginBottom: 16,
-                }}>
-                    <div style={{
-                        fontFamily: 'var(--font-d)',
-                        fontSize: 40,
-                        fontWeight: 900,
-                        color: '#22c55e',
-                        lineHeight: 1,
-                        flexShrink: 0,
-                    }}>78%</div>
-                    <div>
-                        <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>
-                            近期推荐命中率 · 9场7中
-                        </div>
-                        <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 4 }}>
-                            06-12 英格兰大胜 ✅ &nbsp;·&nbsp;
-                            06-11 巴西大球 ✅ &nbsp;·&nbsp;
-                            06-10 西班牙让球 ✅ &nbsp;·&nbsp;
-                            06-08 德国大球 ❌
-                        </div>
+                    fontFamily: 'var(--font-d)',
+                    fontSize: 40,
+                    fontWeight: 900,
+                    color: '#22c55e',
+                    lineHeight: 1,
+                    flexShrink: 0,
+                }}>78%</div>
+                <div>
+                    <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>
+                        近期推荐命中率 · 9场7中
                     </div>
-                    <div style={{ marginLeft: 'auto', flexShrink: 0 }}>
-                        <div style={{
-                            background: 'rgba(34,197,94,0.15)',
-                            border: '1px solid rgba(34,197,94,0.3)',
-                            borderRadius: 6,
-                            padding: '6px 12px',
-                            fontSize: 11,
-                            color: '#22c55e',
-                            fontWeight: 700,
-                            letterSpacing: 1,
-                        }}>今日推荐已更新</div>
+                    <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 4 }}>
+                        06-12 英格兰大胜 ✅ &nbsp;·&nbsp;
+                        06-11 巴西大球 ✅ &nbsp;·&nbsp;
+                        06-10 西班牙让球 ✅ &nbsp;·&nbsp;
+                        06-08 德国大球 ❌
                     </div>
                 </div>
+                <div style={{ marginLeft: 'auto', flexShrink: 0 }}>
+                    <div style={{
+                        background: 'rgba(34,197,94,0.15)',
+                        border: '1px solid rgba(34,197,94,0.3)',
+                        borderRadius: 6,
+                        padding: '6px 12px',
+                        fontSize: 11,
+                        color: '#22c55e',
+                        fontWeight: 700,
+                        letterSpacing: 1,
+                    }}>今日推荐已更新</div>
+                </div>
+            </div>
+
+            <div className="main">
                 <div className="matches">
                     {matches.map((m) => (
                         <Link key={m.slug} href={`/prediction/${m.slug}`} className="mc">
