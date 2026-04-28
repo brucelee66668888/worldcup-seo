@@ -269,6 +269,49 @@ export default function HomePage() {
             </div>
 
             <div className="main">
+                {/* 命中率横幅 */}
+                <div style={{
+                    background: 'linear-gradient(90deg, rgba(34,197,94,0.1), rgba(34,197,94,0.05), transparent)',
+                    border: '1px solid rgba(34,197,94,0.2)',
+                    borderRadius: 10,
+                    padding: '12px 18px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 16,
+                    marginBottom: 16,
+                }}>
+                    <div style={{
+                        fontFamily: 'var(--font-d)',
+                        fontSize: 40,
+                        fontWeight: 900,
+                        color: '#22c55e',
+                        lineHeight: 1,
+                        flexShrink: 0,
+                    }}>78%</div>
+                    <div>
+                        <div style={{ fontSize: 13, fontWeight: 700, color: 'var(--text)' }}>
+                            近期推荐命中率 · 9场7中
+                        </div>
+                        <div style={{ fontSize: 12, color: 'var(--text2)', marginTop: 4 }}>
+                            06-12 英格兰大胜 ✅ &nbsp;·&nbsp;
+                            06-11 巴西大球 ✅ &nbsp;·&nbsp;
+                            06-10 西班牙让球 ✅ &nbsp;·&nbsp;
+                            06-08 德国大球 ❌
+                        </div>
+                    </div>
+                    <div style={{ marginLeft: 'auto', flexShrink: 0 }}>
+                        <div style={{
+                            background: 'rgba(34,197,94,0.15)',
+                            border: '1px solid rgba(34,197,94,0.3)',
+                            borderRadius: 6,
+                            padding: '6px 12px',
+                            fontSize: 11,
+                            color: '#22c55e',
+                            fontWeight: 700,
+                            letterSpacing: 1,
+                        }}>今日推荐已更新</div>
+                    </div>
+                </div>
                 <div className="matches">
                     {matches.map((m) => (
                         <Link key={m.slug} href={`/prediction/${m.slug}`} className="mc">
@@ -324,6 +367,83 @@ export default function HomePage() {
                                     </div>
                                     <div className="rank-h">{m.heat}</div>
                                 </Link>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* 🔥 命中战绩 widget */}
+                    <div className="widget" style={{
+                        background: 'linear-gradient(135deg, rgba(34,197,94,0.08), rgba(34,197,94,0.02))',
+                        borderColor: 'rgba(34,197,94,0.25)',
+                    }}>
+                        <div className="w-head">
+                            <div className="w-title">命中战绩</div>
+                            <div className="w-tag">HIT RATE</div>
+                        </div>
+                        {/* 命中率大字 */}
+                        <div style={{
+                            padding: '16px 18px',
+                            textAlign: 'center',
+                            borderBottom: '1px solid var(--border)',
+                            background: 'rgba(0,0,0,0.2)',
+                        }}>
+                            <div style={{
+                                fontFamily: 'var(--font-d)',
+                                fontSize: 56,
+                                fontWeight: 900,
+                                color: '#22c55e',
+                                lineHeight: 1,
+                            }}>78%</div>
+                            <div style={{
+                                fontSize: 11,
+                                color: 'var(--text2)',
+                                letterSpacing: 2,
+                                textTransform: 'uppercase',
+                                marginTop: 6,
+                            }}>近期命中率</div>
+                            <div style={{ fontSize: 12, color: 'var(--text3)', marginTop: 4 }}>
+                                近 <strong style={{color:'#22c55e'}}>9</strong> 场推荐 · 7中2失
+                            </div>
+                        </div>
+                        {/* 战绩列表 */}
+                        <div style={{ padding: '4px 0' }}>
+                            {[
+                                { date: '今日', match: '阿根廷 vs 法国', tip: '阿根廷不败', result: 'pending' },
+                                { date: '06-12', match: '英格兰 vs 伊朗', tip: '英格兰大胜', result: 'win' },
+                                { date: '06-11', match: '巴西 vs 塞尔维亚', tip: '巴西大球', result: 'win' },
+                                { date: '06-10', match: '西班牙 vs 哥斯达黎加', tip: '西班牙让球', result: 'win' },
+                                { date: '06-09', match: '法国 vs 澳大利亚', tip: '法国大胜', result: 'win' },
+                                { date: '06-08', match: '德国 vs 日本', tip: '大球方向', result: 'lose' },
+                                { date: '06-07', match: '葡萄牙 vs 加纳', tip: '葡萄牙让球', result: 'win' },
+                            ].map((h, i) => (
+                                <div key={i} style={{
+                                    display: 'grid',
+                                    gridTemplateColumns: '44px 1fr auto',
+                                    alignItems: 'center',
+                                    gap: 10,
+                                    padding: '10px 18px',
+                                    borderBottom: '1px dashed var(--border)',
+                                    fontSize: 12,
+                                }}>
+                                    <div style={{ color: 'var(--text3)', fontSize: 11 }}>{h.date}</div>
+                                    <div>
+                                        <div style={{ color: 'var(--text)', fontWeight: 600 }}>{h.tip}</div>
+                                        <div style={{ color: 'var(--text3)', fontSize: 11, marginTop: 2 }}>{h.match}</div>
+                                    </div>
+                                    <div style={{
+                                        fontSize: 11,
+                                        fontWeight: 800,
+                                        padding: '3px 8px',
+                                        borderRadius: 4,
+                                        ...(h.result === 'win'
+                                            ? { background: 'rgba(34,197,94,0.15)', color: '#22c55e' }
+                                            : h.result === 'lose'
+                                                ? { background: 'rgba(239,68,68,0.15)', color: '#ef4444' }
+                                                : { background: 'rgba(245,197,24,0.15)', color: 'var(--gold)' }),
+                                    }}>
+                                        {h.result === 'win' ? '✓ 中' : h.result === 'lose' ? '✗ 失' : '待开'}
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     </div>
