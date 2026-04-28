@@ -134,8 +134,52 @@ export default async function PredictionPage({ params }: Props) {
 
     const related = posts.filter((p) => p.slug !== slug).slice(0, 4)
 
+    const siteUrl = 'https://football2026tips.com'
+
+    const sportsEventSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'SportsEvent',
+        name: `${post.home} vs ${post.away}`,
+        startDate: `${post.date}T${md?.time ?? '20:00'}:00+08:00`,
+        sport: 'Football',
+        description: post.description,
+        url: `${siteUrl}/prediction/${post.slug}`,
+        location: { '@type': 'Place', name: '2026 FIFA World Cup' },
+        competitor: [
+            { '@type': 'SportsTeam', name: post.home },
+            { '@type': 'SportsTeam', name: post.away },
+        ],
+        superEvent: { '@type': 'SportsEvent', name: '2026 FIFA World Cup' },
+    }
+
+    const articleSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'Article',
+        headline: post.title,
+        description: post.description,
+        datePublished: post.date,
+        dateModified: post.date,
+        author: { '@type': 'Organization', name: 'Football2026Tips', url: siteUrl },
+        publisher: { '@type': 'Organization', name: 'Football2026Tips', url: siteUrl },
+        mainEntityOfPage: { '@type': 'WebPage', '@id': `${siteUrl}/prediction/${post.slug}` },
+        keywords: post.keywords.join(', '),
+    }
+
+    const breadcrumbSchema = {
+        '@context': 'https://schema.org',
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+            { '@type': 'ListItem', position: 1, name: '首页', item: siteUrl },
+            { '@type': 'ListItem', position: 2, name: '赛事预测', item: `${siteUrl}/#matches` },
+            { '@type': 'ListItem', position: 3, name: `${post.home} vs ${post.away}`, item: `${siteUrl}/prediction/${post.slug}` },
+        ],
+    }
+
     return (
         <>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(sportsEventSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
             <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
